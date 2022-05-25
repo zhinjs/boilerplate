@@ -36,9 +36,6 @@
   ],
   "dependencies": {
     "@oitq/cli": "^2.0.1-rc",
-    "@oitq/client": "^0.0.1",
-    "@oitq/plugin-console": "^0.0.1-1",
-    "@oitq/plugin-http-server": "^2.0.2-4",
     "esbuild-register": "^3.3.2",
     "oitq": "^2.0.4-7",
     "tsconfig-paths": "^4.0.0"
