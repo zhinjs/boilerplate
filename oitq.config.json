@@ -1,0 +1,18 @@
+{
+    "bots": [
+        {
+            "uin": 210723495
+        }
+    ],
+    "plugins": {
+        "help": true,
+        "example": true,
+        "example-ts": true
+    },
+    "delay": {
+        "prompt": 6000
+    },
+    "plugin_dir": "plugins",
+    "port": 8086,
+    "start": true
+}

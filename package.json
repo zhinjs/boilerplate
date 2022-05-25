@@ -1,18 +1,18 @@
 {
-  "name": "@lc-cn/ts-dev-template",
+  "name": "@oitq/app",
   "version": "1.0.0",
-  "description": "ts开发环境配置",
-  "main": "lib/index.js",
+  "private": true,
+  "description": "oitq插件开发样例",
+  "main": "index.js",
   "scripts": {
-    "start": "node .",
-    "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
-    "dev": "ts-node-dev -r tsconfig-paths/register ./src/index.ts",
+    "start": "oitq start . -r esbuild-register -r tsconfig-paths/register",
+    "dev": "oitq start . --watch --log-level info -r esbuild-register -r tsconfig-paths/register",
     "pub": "npm publish --access public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lc-cn/ts-dev-template.git"
+    "url": "git+https://github.com/oitq/app.git"
   },
   "keywords": [
     "ts",
@@ -22,20 +22,25 @@
   "author": "凉菜",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lc-cn/ts-dev-template/issues"
+    "url": "https://github.com/oitq/app/issues"
   },
-  "homepage": "https://github.com/lc-cn/ts-dev-template#readme",
+  "homepage": "https://github.com/oitq/app#readme",
   "devDependencies": {
     "@types/node": "latest",
-    "ts-node-dev": "latest",
-    "tsc-alias": "latest",
-    "tsconfig-paths": "latest",
-    "typescript": "latest"
+    "esbuild": "^0.14.39"
   },
   "files": [
     "/lib/**/*.js",
     "/lib/**/*.d.ts",
     "/lib/**/LICENSE"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "@oitq/cli": "^2.0.1-rc",
+    "@oitq/client": "^0.0.1",
+    "@oitq/plugin-console": "^0.0.1-1",
+    "@oitq/plugin-http-server": "^2.0.2-4",
+    "esbuild-register": "^3.3.2",
+    "oitq": "^2.0.4-7",
+    "tsconfig-paths": "^4.0.0"
+  }
 }
