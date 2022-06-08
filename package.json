@@ -35,9 +35,9 @@
     "/lib/**/LICENSE"
   ],
   "dependencies": {
-    "@oitq/cli": "^2.0.1-rc",
+    "@oitq/cli": "^2.0.2-2",
     "esbuild-register": "^3.3.2",
-    "oitq": "^2.0.4-7",
+    "oitq": "2.0.5-1"
     "tsconfig-paths": "^4.0.0"
   }
 }
