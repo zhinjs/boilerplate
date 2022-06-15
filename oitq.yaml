@@ -1,0 +1,23 @@
+port: 8086
+logLevel: info
+delay:
+    prompt: 6000
+plugin_dir: plugins
+bots:
+    -
+        uin: 123456789
+        config:
+            platform: 5
+        oneBot: true
+plugins:
+    example:
+    example-ts:
+    help:
+services:
+    http-server:
+    console:
+        devMode:
+        apiPath: api
+        selfUrl: /
+        uiPath: /console
+    onebot:

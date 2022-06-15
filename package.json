@@ -5,10 +5,10 @@
   "description": "oitq插件开发样例",
   "main": "index.js",
   "scripts": {
-    "start": "oitq start . -r esbuild-register -r tsconfig-paths/register",
-    "dev": "oitq start . --watch --log-level info -r esbuild-register -r tsconfig-paths/register",
+    "start": "oitq start -r esbuild-register -r tsconfig-paths/register .",
+    "dev": "oitq start --watch --log-level info -r esbuild-register -r tsconfig-paths/register .",
     "pub": "npm publish --access public",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node -r esbuild-register -r tsconfig-paths/register ."
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,10 @@
   "homepage": "https://github.com/oitq/app#readme",
   "devDependencies": {
     "@types/node": "latest",
-    "esbuild": "^0.14.39"
+    "esbuild": "^0.14.39",
+    "esbuild-register": "^3.3.3",
+    "mysql2": "^2.3.3",
+    "tsconfig-paths": "^4.0.0"
   },
   "files": [
     "/lib/**/*.js",
@@ -35,9 +38,13 @@
     "/lib/**/LICENSE"
   ],
   "dependencies": {
-    "@oitq/cli": "^2.0.2-2",
-    "esbuild-register": "^3.3.2",
-    "oitq": "2.0.5-1",
-    "tsconfig-paths": "^4.0.0"
+    "@oitq/cli": "^2.0.2-4",
+    "@oitq/client": "^0.0.3-2",
+    "@oitq/plugin-help": "^0.0.1",
+    "@oitq/service-console": "^0.0.2-1",
+    "@oitq/service-http-server": "^0.0.2",
+    "@oitq/service-onebot": "^0.0.2",
+    "@oitq/shop": "^0.0.1",
+    "oitq": "^2.0.5-5"
   }
 }

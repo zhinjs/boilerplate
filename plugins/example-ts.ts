@@ -9,7 +9,7 @@ export function install(plugin:Plugin){
     // 监听事件
     plugin.on('bot.message',session => {
         if(session.cqCode==='hello'){
-            session.reply('你好')
+            session.reply('你好？？')
         }
     })
 }

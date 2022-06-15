@@ -26,8 +26,9 @@ module.exports = {
             })
         // 监听事件
         plugin.on('bot.message',(session) => {
+            console.log(session.message)
             if(session.cqCode==='你好'){
-                session.reply('哈哈哈哈')
+                session.reply('哈哈哈')
             }
         })
     }
