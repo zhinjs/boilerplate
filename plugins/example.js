@@ -31,5 +31,26 @@ module.exports = {
                 session.reply('哈哈哈')
             }
         })
+        // 扫码登陆
+        plugin.on('bot.system.login.qrcode',(session) => {
+            console.log('请扫码后按回车继续')
+            process.stdin.on('data',()=>session.bot.login())
+        })
+        // 滑块验证
+        plugin.on('bot.system.login.slider',(session) => {
+            console.log('请输入滑块验证的ticket：')
+            process.stdin.on('data',(ticket)=>{
+                session.bot.submitSlider(ticket.toString())
+                session.bot.login()
+            })
+        })
+        // 设备验证
+        plugin.on('bot.system.login.device',(session) => {
+            console.log('请输入手机收到的验证码：')
+            process.stdin.on('data',(sms)=>{
+                session.bot.submitSmsCode(sms.toString())
+                session.bot.login()
+            })
+        })
     }
 }
