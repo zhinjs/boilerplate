@@ -5,8 +5,7 @@
   "description": "oitq插件开发样例",
   "main": "index.js",
   "scripts": {
-    "start": "oitq start --log-level info -r esbuild-register -r tsconfig-paths/register .",
-    "dev": "oitq start --watch --log-level info -r esbuild-register -r tsconfig-paths/register .",
+    "start": "node .",
     "pub": "npm publish --access public",
     "test": "node -r esbuild-register -r tsconfig-paths/register ."
   },
