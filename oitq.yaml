@@ -1,5 +1,5 @@
 logLevel: info
-plugin_dir: src/plugins
+plugin_dir: plugins
 adapters:
     oicq:
         bots:
