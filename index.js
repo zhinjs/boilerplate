@@ -1,3 +1,3 @@
-const {createApp} = require('oitq')
-createApp().start()
+const {start} = require('oitq')
+start()
 console.log('oitq is running')

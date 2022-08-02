@@ -38,13 +38,6 @@
     "/lib/**/LICENSE"
   ],
   "dependencies": {
-    "@oitq/cli": "^2.0.2-4",
-    "@oitq/client": "^0.0.3-2",
-    "@oitq/plugin-help": "^0.0.1",
-    "@oitq/service-console": "^0.0.2-1",
-    "@oitq/service-http-server": "^0.0.2",
-    "@oitq/service-onebot": "^0.0.2",
-    "@oitq/shop": "^0.0.1",
-    "oitq": "^2.0.5-5"
+    "oitq": "^3.0.4"
   }
 }
