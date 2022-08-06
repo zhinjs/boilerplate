@@ -37,6 +37,9 @@
     "/lib/**/LICENSE"
   ],
   "dependencies": {
-    "oitq": "^3.0.4"
+    "@oitq/service-database": "^0.0.3",
+    "@oitq/service-onebot": "^0.0.4",
+    "@oitq/service-web": "^0.0.5",
+    "oitq": "^3.0.6"
   }
 }
