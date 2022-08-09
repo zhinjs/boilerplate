@@ -39,7 +39,8 @@
   "dependencies": {
     "@oitq/service-database": "^0.0.3",
     "@oitq/service-onebot": "^0.0.4",
-    "@oitq/service-web": "^0.0.5",
-    "oitq": "^3.0.6"
+    "@oitq/service-web": "^0.0.6",
+    "axios": "^0.27.2",
+    "oitq": "^3.0.16"
   }
 }
