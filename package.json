@@ -1,13 +1,13 @@
 {
-  "name": "@oitq/app",
+  "name": "",
   "version": "1.0.0",
   "private": true,
-  "description": "oitq插件开发样例",
+  "description": "zhin插件开发样例",
   "main": "index.js",
   "scripts": {
     "start": "node .",
     "pub": "npm publish --access public",
-    "test": "node -r esbuild-register -r tsconfig-paths/register ."
+    "test": "node ."
   },
   "repository": {
     "type": "git",
@@ -25,11 +25,6 @@
   },
   "homepage": "https://github.com/oitq/app#readme",
   "devDependencies": {
-    "@types/node": "latest",
-    "esbuild": "^0.14.39",
-    "esbuild-register": "^3.3.3",
-    "mysql2": "^2.3.3",
-    "tsconfig-paths": "^4.0.0"
   },
   "files": [
     "/lib/**/*.js",
@@ -37,10 +32,6 @@
     "/lib/**/LICENSE"
   ],
   "dependencies": {
-    "@oitq/service-database": "^0.0.3",
-    "@oitq/service-onebot": "^0.0.4",
-    "@oitq/service-web": "^0.0.6",
-    "axios": "^0.27.2",
-    "oitq": "^3.0.16"
+    "zhin": "1.0.11"
   }
 }
