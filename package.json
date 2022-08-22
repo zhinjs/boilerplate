@@ -30,12 +30,17 @@
     "/lib/**/LICENSE"
   ],
   "dependencies": {
+    "@koa/router": "^12.0.0",
+    "@types/koa": "^2.13.5",
+    "@types/koa__router": "^8.0.11",
     "axios": "^0.27.2",
+    "koa": "^2.13.4",
     "lodash": "^4.17.21",
-    "zhin": "^1.0.36"
+    "zhin": "^1.0.38"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.184",
-    "@types/node": "^18.7.8"
+    "@types/node": "^18.7.8",
+    "@types/ws": "^8.5.3"
   }
 }
