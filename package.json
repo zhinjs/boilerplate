@@ -38,7 +38,7 @@
     "koa-bodyparser": "^4.3.0",
     "lodash": "^4.17.21",
     "ws": "^8.8.1",
-    "zhin": "^1.2.6"
+    "zhin": "^1.2.7"
   },
   "devDependencies": {
     "@types/koa-bodyparser": "^4.3.7",
