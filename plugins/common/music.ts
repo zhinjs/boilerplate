@@ -89,10 +89,10 @@ type MusicInfo = {
     type: MusicPlatform,
     id: string
 }
-export const name='music'
+
 export function install(bot: Bot) {
     bot
-        .command('common/music [keyword:string]', 'all')
+        .command('common/music [keyword:string]')
         .desc('点歌')
         .shortcut('点歌', {fuzzy: true})
         .shortcut(/^来一首(\S+)$/, {args: ['$1']})

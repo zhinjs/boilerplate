@@ -16,7 +16,7 @@ function outputConfig(config,key){
     return key.endsWith('password')?new Array(result.length).fill('*').join(''):result
 }
 export function install(bot:Bot){
-    const command=bot.command('config [key:string] [value]',"all")
+    const command=bot.command('config [key:string] [value]')
         .desc('插件、编辑配置文件')
         .check(({event})=>!bot.isMaster(event.user_id) && '权限不足')
         .option('delete','-d 删除指定配置')

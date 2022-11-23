@@ -1,6 +1,5 @@
 import {Bot} from "zhin";
 import {segment,Forwardable} from 'oicq'
-import * as music from './music'
 export interface RecallConfig {
     recall?: number
 }
@@ -19,9 +18,8 @@ export interface BasicConfig extends RecallConfig {
     feedback?: number | number[]
     respondent?: Respondent | Respondent[]
 }
-
 export function echo(bot: Bot) {
-    bot.command('common/echo <varName:string>', 'all')
+    bot.command('common/echo <varName:string>')
         .desc('输出当前会话中的变量值')
         .action(async ({event}, varName) => {
             let result: any = event
@@ -44,7 +42,7 @@ export function echo(bot: Bot) {
 }
 
 export function send(bot: Bot) {
-    bot.command('common/send <message:text>', 'all')
+    bot.command('common/send <message:text>')
         .desc('向当前上下文发送消息')
         .option('user', '-u [user:number]  发送到用户')
         .option('group', '-g [group:number]  发送到群')
@@ -68,33 +66,6 @@ export function send(bot: Bot) {
         })
 }
 
-export function recall(bot: Bot, {recall = 10}: RecallConfig) {
-    const recent: Record<string, string[]> = {}
-    bot.on('send', (messageRet, channelId) => {
-        const list = recent[channelId] ||= []
-        list.unshift(messageRet.message_id)
-        if (list.length > recall) {
-            list.pop()
-        }
-    })
-    bot
-        .command('common/recall [count:number]', 'all')
-        .desc('撤回机器人发送的消息')
-        .action(async ({event}, count = 1) => {
-            const list = recent[getChannelId(event)] ||= []
-            if (!list.length) return '近期没有发送消息。'
-            const removal = list.splice(0, count)
-            if (!list.length) delete recent[getChannelId(event)]
-            for (let index = 0; index < removal.length; index++) {
-                try {
-                    await bot.deleteMsg(removal[index])
-                } catch (error) {
-                    bot.logger.warn(error)
-                }
-            }
-            return true
-        })
-}
 
 export function feedback(bot: Bot, {
     operators
@@ -108,7 +79,7 @@ export function feedback(bot: Bot, {
         })
     }
 
-    bot.command('common/feedback <message:text>', 'all')
+    bot.command('common/feedback <message:text>')
         .desc('发送反馈信息给作者')
         .action(async ({event}, text) => {
             if (!text) return '请输入反馈消息'
@@ -129,35 +100,17 @@ export function feedback(bot: Bot, {
         })
 }
 
-export function respondent(bot: Bot, respondents: Respondent[]) {
-    bot.middleware((session) => {
-        const message = session.cqCode.trim()
-        for (const {match, reply} of respondents) {
-            const capture = typeof match === 'string' ? message === match && [message] : message.match(match)
-            if (capture) return typeof reply === 'string' ? reply : reply(...capture)
-        }
-        return ''
-    })
-}
 
 export function basic(bot: Bot, config: BasicConfig = {feedback: []}) {
     if(!config) config={}
-    if (config.echo !== false) bot.use(echo)
-    if (config.send !== false) bot.use(send)
-    if (!(config.recall <= 0)) bot.use(recall, config)
-
-
-    const operators = [].concat(config.feedback).filter(Boolean).map(op => Number(op))
-    if (operators.length) bot.use(feedback, {operators})
-
-    const respondents = [].concat(config.respondent).filter(Boolean)
-    if (respondents.length) bot.use(respondent, respondents)
+    if (config.echo !== false) bot.plugin(echo)
+    if (config.send !== false) bot.plugin(send)
 }
 
 export function github(bot: Bot) {
     bot.middleware((session) => {
         const mathReg = /(?:https?:\/\/)?(?:www\.)?github\.com\/([^/]+)\/([^/]+)\/?$/
-        const match = session.cqCode.match(mathReg)
+        const match = session.toCqcode().match(mathReg)
         if (!match) return
         const [, owner, repo] = match
         const url = `https://opengraph.github.com/repo/${owner}/${repo}`
@@ -170,30 +123,30 @@ export interface Config extends BasicConfig {
 }
 
 export function install(bot: Bot, config: Config={}) {
-    bot.command('common', 'all')
+    bot.command('common')
         .desc('基础功能')
-    bot.command('common/segment', 'all')
+    bot.command('common/segment')
         .desc('生成指定消息段内容')
-    if (config && config.github !== false) bot.use(github)
-    bot.command('common/segment/face <id:integer>', 'all')
+    if (config && config.github !== false) bot.plugin(github)
+    bot.command('common/segment/face <id:integer>')
         .desc('发送一个表情')
         .action((_, id) => segment.face(id))
-    bot.command('common/segment/image <file>', 'all')
+    bot.command('common/segment/image <file>')
         .desc('发送一个一张图片')
         .action((_, file) => segment.image(file))
-    bot.command('common/segment/at <qq:integer>', 'all')
+    bot.command('common/segment/at <qq:integer>')
         .desc('发送at')
         .action((_, at) => segment.at(at))
-    bot.command('common/segment/dice [id:integer]', 'all')
+    bot.command('common/segment/dice [id:integer]')
         .desc('发送摇骰子结果')
         .action((_, id) => segment.dice(id))
-    bot.command('common/segment/rps [id:integer]', 'all')
+    bot.command('common/segment/rps [id:integer]')
         .desc('发送猜拳结果')
         .action((_, id) => segment.rps(id))
-    bot.command('common/segment/poke', 'all')
+    bot.command('common/segment/poke')
         .desc('发送戳一戳【随机一中类型】')
         .action((_, qq) => segment.poke(parseInt((Math.random() * 7).toFixed(0))))
-    bot.command('common/segment/fake [user_id:qq] [message]', 'all')
+    bot.command('common/segment/fake [user_id:qq] [message]')
         .desc('制作假的合并消息')
         .action(async ({event, options}, user_id, message) => {
             if(!message || !user_id) return 'message and user_id is required'
@@ -206,15 +159,7 @@ export function install(bot: Bot, config: Config={}) {
             let finished=true
             return await bot.makeForwardMsg(messageArr)
         })
-    bot.command('common/exec <command:text>', 'all')
-        .desc('解析模板语法')
-        .action(async ({event}, command) => {
-            if (!command.match(/\$\(.*\)/)) return `模板语法错误：${command}`
-            event.cqCode=command
-            const result = await bot.executeCommand(event)
-            if (result && typeof result === 'string') return result
-            return true
-        })
-    bot.use(basic, config)
-    bot.use(music)
+    bot.plugin(basic, config)
+    bot.plugin('common/music')
+
 }
