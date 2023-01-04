@@ -5,6 +5,7 @@
   "description": "zhin插件开发样例",
   "main": "index.js",
   "scripts": {
+    "start": "npm run start:zhin",
     "start:zhin": "node .",
     "pub": "npm publish --access public",
     "test": "node ."
