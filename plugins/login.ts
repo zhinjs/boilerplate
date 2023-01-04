@@ -5,7 +5,6 @@ export function install(this:Plugin,bot:Bot){
         process.stdin.once('data',(data)=>{
             bot.submitSlider(data.toString().trim())
             console.log('到这儿')
-            bot.login()
         })
     })
     bot.on('system.login.qrcode',(e)=>{
@@ -16,10 +15,9 @@ export function install(this:Plugin,bot:Bot){
     })
     bot.on('system.login.device',(e)=>{
         console.log('请输入密保手机收到的验证码:')
-        bot.sendSMSCode()
+        bot.sendSmsCode()
         process.stdin.once('data',(data)=>{
-            bot.submitSMSCode(data.toString().trim())
-            bot.login()
+            bot.submitSmsCode(data.toString().trim())
         })
     })
 }
