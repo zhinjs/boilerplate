@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run start:zhin",
-    "start:zhin": "node .",
+    "start:zhin": "start-zhin",
     "pub": "npm publish --access public",
     "test": "node ."
   },
@@ -34,13 +34,13 @@
     "@koa/router": "^12.0.0",
     "@types/koa": "^2.13.5",
     "@types/koa__router": "^8.0.11",
-    "@zhinjs/cli": "^0.1.2",
+    "@zhinjs/cli": "^0.2.9",
     "axios": "^0.27.2",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "lodash": "^4.17.21",
     "ws": "^8.8.1",
-    "zhin": "^1.2.7"
+    "zhin": "^2.0.2-24"
   },
   "devDependencies": {
     "@types/koa-bodyparser": "^4.3.7",
