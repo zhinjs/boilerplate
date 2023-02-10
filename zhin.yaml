@@ -1,0 +1,16 @@
+port: 8809
+adapters: {}
+data_dir: data
+plugin_dir: plugins
+plugins:
+  help: null
+  config: null
+  daemon: null
+  login: null
+  logs: null
+  plugin: null
+  status: null
+  watcher: /Users/liuchunlang/IdeaProjects/boilerplate
+log_level: info
+delay:
+  prompt: 60000

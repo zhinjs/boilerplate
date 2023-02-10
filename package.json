@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oitq/app.git"
+    "url": "git+https://github.com/zhinjs/boilerplate.git"
   },
   "keywords": [
     "ts",
@@ -22,30 +22,16 @@
   "author": "凉菜",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/oitq/app/issues"
+    "url": "https://github.com/zhinjs/boilerplate/issues"
   },
-  "homepage": "https://github.com/oitq/app#readme",
+  "homepage": "https://github.com/zhinjs/boilerplate#readme",
   "files": [
     "/lib/**/*.js",
     "/lib/**/*.d.ts",
     "/lib/**/LICENSE"
   ],
   "dependencies": {
-    "@koa/router": "^12.0.0",
-    "@types/koa": "^2.13.5",
-    "@types/koa__router": "^8.0.11",
-    "@zhinjs/cli": "^0.2.9",
-    "axios": "^0.27.2",
-    "koa": "^2.13.4",
-    "koa-bodyparser": "^4.3.0",
-    "lodash": "^4.17.21",
-    "ws": "^8.8.1",
-    "zhin": "^2.0.2-24"
-  },
-  "devDependencies": {
-    "@types/koa-bodyparser": "^4.3.7",
-    "@types/lodash": "^4.14.184",
-    "@types/node": "^18.7.8",
-    "@types/ws": "^8.5.3"
+    "@zhinjs/cli": "latest",
+    "zhin": "latest"
   }
 }
